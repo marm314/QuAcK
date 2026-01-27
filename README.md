@@ -19,7 +19,7 @@
 - [Enzo Monino](https://enzomonino.github.io)
 - [Antoine Marie](https://antoine-marie.github.io)
 - [Abdallah Ammar](https://scholar.google.com/citations?user=y437T5sAAAAJ&hl=en)
-- [Mauricio Rodriguez-Mayorga](https://scholar.google.com/citations?user=OLGOgQgAAAAJ&hl=es)
+- [Mauricio Rodriguez-Mayorga](https://drmarm314.wordpress.com/2019/03/26/index/)
 - [Loris Burth](https://github.com/lburth)
 
 ---
