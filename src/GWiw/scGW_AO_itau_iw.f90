@@ -34,6 +34,7 @@ subroutine scGW_AO_itau_iw(nBas,nOrb,nO,maxSCF,thresh_in,maxDIIS,dolinGW,dophRPA
  
   logical                       :: file_exists
   logical                       :: read_SD_chkp
+  logical                       :: dont_adjust_Ne
   logical                       :: normal_diis
 
   integer                       :: n_diis
@@ -138,6 +139,9 @@ subroutine scGW_AO_itau_iw(nBas,nOrb,nO,maxSCF,thresh_in,maxDIIS,dolinGW,dophRPA
  write(*,*)
 
  ! Initialize variables
+ dont_adjust_Ne=.false.
+ inquire(file='dont_adjust_Ne', exist=file_exists)
+ if(file_exists) dont_adjust_Ne=.true.
  normal_diis=.true.
  n_diis=0
  verbose=0
@@ -532,7 +536,7 @@ subroutine scGW_AO_itau_iw(nBas,nOrb,nO,maxSCF,thresh_in,maxDIIS,dolinGW,dophRPA
     if(abs(trace_1_rdm-nElectrons)**2d0>thrs_N .and. chem_pot_scG) &
      call fix_chem_pot_scGX_bisec(iter_fock,nBas,nfreqs,nElectrons,thrs_N,thrs_Ngrad,chem_pot,S,F_ao,Sigma_c_w_ao,wcoord,wweight, &
                                   Mat_ao_tmp,G_ao_iw_hf,DeltaG_ao_iw,P_ao,P_ao_hf,trace_1_rdm,chem_pot_saved,verbose_scGW)
-    if(abs(trace_1_rdm-nElectrons)**2d0>thrs_N .and. .not.chem_pot_scG) &
+    if(abs(trace_1_rdm-nElectrons)**2d0>thrs_N .and. (.not.chem_pot_scG .and. .not.dont_adjust_Ne) ) &
      P_ao=nElectrons*P_ao/trace_1_rdm
 
     ! Check convergence of P_ao for fixed Sigma_c(i w)
