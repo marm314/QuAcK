@@ -153,6 +153,7 @@ subroutine scGF2_AO_itau_iw(nBas,nOrb,nO,maxSCF,maxDIIS,dolinGF2,restart_scGF2,v
   write(*,'(A)') '   Adjusting the chemical potential is activated'
  else
   write(*,'(A)') '   Adjusting the chemical potential is deactivated'
+  if(dont_adjust_Ne) write(*,'(A)') '   switched off factor adjustment'
  endif
  write(*,*)
  eHF(:) = eHF(:)-chem_pot_saved
