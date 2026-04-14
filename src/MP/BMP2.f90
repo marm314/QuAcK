@@ -205,7 +205,7 @@ subroutine BMP2(nBas,nOrb,cHFB,Hc,S,ERI,chem_pot,sigma,U_QP,ERHFB,EcMP2)
     enddo 
    enddo 
   enddo
-  dEcMP2=-dEcMP2/2.4d1
+  dEcMP2=-dEcMP2/6d0
 
   write(*,*)
   write(*,'(A32)')           '---------------------------'
